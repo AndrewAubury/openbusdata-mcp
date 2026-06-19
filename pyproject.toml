@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "openbusdata-mcp"
-version = "1.0.1"
+version = "1.0.2"
 description = "MCP server for UK Bus Open Data Service with timetable parsing and journey planning"
 readme = "README.md"
 license = { text = "MIT" }

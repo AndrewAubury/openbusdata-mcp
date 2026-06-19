@@ -13,6 +13,7 @@
       "registryType": "pypi",
       "identifier": "openbusdata-mcp",
       "version": "1.0.0",
+      "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
       },

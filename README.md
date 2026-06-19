@@ -15,6 +15,14 @@ timetable parsing, stop search, route discovery, journey planning and real-time 
 
 ## Installation
 
+### Option 1: via `uvx` (recommended — no install needed)
+
+```bash
+uvx openbusdata-mcp
+```
+
+### Option 2: via `pip`
+
 ```bash
 pip install openbusdata-mcp
 ```
@@ -31,7 +39,25 @@ Get a free key at [data.bus-data.dft.gov.uk](https://data.bus-data.dft.gov.uk).
 
 ## Usage
 
+### With `uvx` (recommended)
+
 Add to your MCP client (Claude Desktop, Cursor, etc.):
+
+```json
+{
+  "mcpServers": {
+    "openbusdata": {
+      "command": "uvx",
+      "args": ["openbusdata-mcp"],
+      "env": {
+        "OPENBUS_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+### With `pip` install
 
 ```json
 {

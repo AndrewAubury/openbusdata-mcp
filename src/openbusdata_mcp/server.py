@@ -36,8 +36,8 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 # ---------------------------------------------------------------------------
 BASE_URL = os.environ.get("OPENBUS_BASE_URL", "https://data.bus-data.dft.gov.uk")
 API_KEY = os.environ.get("OPENBUS_API_KEY", "")
-# Resolve specs from project root (where server.json and YAML files live)
-SPECS_DIR = Path(__file__).parent.parent.parent
+# Resolve specs from the bundled openapi-schema directory inside the package
+SPECS_DIR = Path(__file__).parent / "openapi-schema"
 CACHE_DIR = Path.home() / ".cache" / "openbusdata"
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -965,9 +965,9 @@ def main():
     if not API_KEY:
         print("WARNING: OPENBUS_API_KEY not set.", file=sys.stderr)
     if not specs:
-        print(f"No .yml spec files found in {SPECS_DIR}", file=sys.stderr)
-        sys.exit(1)
-    print(f"Loaded {len(specs)} OpenAPI specs: {', '.join(specs.keys())}", file=sys.stderr)
+        print(f"WARNING: No .yml spec files found in {SPECS_DIR}. OpenAPI-based tools will be unavailable.", file=sys.stderr)
+    else:
+        print(f"Loaded {len(specs)} OpenAPI specs: {', '.join(specs.keys())}", file=sys.stderr)
     mcp.run()
 
 
